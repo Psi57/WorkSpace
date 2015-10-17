@@ -1,0 +1,6 @@
+weight	:	weight.o
+	clang++ weight.o -o weight -std=c++11
+
+weight.o	:	Weight.cpp
+	clang++ -c Weight.cpp -o weight.o -std=c++11
+

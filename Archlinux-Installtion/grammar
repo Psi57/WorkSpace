@@ -1,0 +1,34 @@
+INSTALL("sth.")----------add "pacman -S sth. --noconfirm" into config file.
+E.G: INSTALL("firefox") --- "pacman -s firefox --noconfirm"
+
+SERVER("sth.) ---------------- add "systemctl enable sth."
+E.G: SERVER("NetWorkManager") ---- "systemctl enable NetWorkManager"
+
+CHAROUT("Sth.") --- print "Sth."
+
+SETSGIN(sgin)
+GOTO(sgin)----------------go sgin
+E.G
+SETSGIN("sgin")
+CHAROUT("h")
+GOTO("sgin")
+NOTE:sgin could set again.
+
+SETV(name,string)
+
+SWITCH(string):
+"sthx1.":sthy1
+"sthx2":sthy2
+....
+other:sth.
+get a string,if it's sthx1 then run sthy1 and so on.
+
+GETCHAR(String)
+GETCHAR(string)
+CHAROUT(string)
+
+ADD(string)------add sth to config file
+E.G:
+ADD("echo \"sss\">> ss")
+
+RUN("sth")----------run config

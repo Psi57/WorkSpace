@@ -1,0 +1,46 @@
+# Your keymap
+#
+# Atom keymaps work similarly to style sheets. Just as style sheets use
+# selectors to apply styles to elements, Atom keymaps use selectors to associate
+# keystrokes with events in specific contexts. Unlike style sheets however,
+# each selector can only be declared once.
+#
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+#
+# Here's an example taken from Atom's built-in keymap:
+#
+# 'atom-text-editor':
+#   'enter': 'editor:newline'
+#
+# 'atom-workspace':
+#   'ctrl-shift-p': 'core:move-up'
+#   'ctrl-p': 'core:move-down'
+#
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+#设置候选全局上下移动及打开分割窗口
+'body':
+  'ctrl-h ctrl-h':'pane:split-left'      #分割窗口
+  'ctrl-j ctrl-j':'pane:split-down'      #分割窗口
+  'ctrl-k ctrl-k':'pane:split-up'         #分割窗口
+  'ctrl-l ctrl-l':'pane:split-right'     #分割窗口
+  'alt-h alt-h':'window:focus-pane-on-left'      #移动左窗口
+  'alt-j alt-j':'window:focus-pane-below'      #移动下窗口
+  'alt-k alt-k':'window:focus-pane-above'         #移动上窗口
+  'alt-l alt-l':'window:focus-pane-on-right'     #移动右窗口
+
+'.platform-linux atom-workspace, .platform-linux atom-text-editor, .platform-win32 atom-workspace, .platform-win32 atom-text-editor':
+  'ctrl-alt-b': 'unset!'
+  'F5': 'build:trigger'
+  'F6': 'build:select-active-target'
+'atom-workspace':
+  'ctrl-alt-o': 'unset!'
+  'F4': 'tree-view-finder:toggle'
+  'F8': 'symbols-tree-view:toggle'

@@ -1,0 +1,24 @@
+#include "/home/wuxiangdong/WorkSpace/Statistics/handfile.h"
+#include <iostream>
+#include <vector>
+using namespace std;
+int main (){
+	double temp;
+	vector<double> vec;
+	vector<math_app_time> apptime;
+	while(true){
+		if (cin >> temp){
+			vec.push_back(temp);
+		}else{
+			cin.clear();
+			cout << "平均数:" << average(vec) << " 中位数:" << median(vec);
+			apptime = find_math_time (vec);
+			find_MAX_time(apptime);
+			for(auto &v : apptime){
+				cout << " 众数:" << v.math <<" 次数"<<v.times;
+			}
+			vec.clear();
+		}
+	}
+	return 0;
+}

@@ -1,0 +1,5 @@
+main_2	:	main_2.o
+	clang++ main_2.o -o main_2 -std=c++11
+
+main_2.o	:	main_2.cpp
+	clang++ -c main_2.cpp -o main_2.o -std=c++11

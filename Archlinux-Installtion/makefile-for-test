@@ -1,0 +1,5 @@
+Test	:	Test.o
+	clang++ Test.o -o Test -O3 -std=c++11
+
+Test.o	:	Test.cpp
+	clang++ -c Test.cpp -o Test.o -O3 -std=c++11
