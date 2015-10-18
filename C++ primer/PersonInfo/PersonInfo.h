@@ -44,7 +44,7 @@ std::istream &read(std::istream &is,std::vector<PersonInfo> &vec){
     vec.clear();
     while(getline(is,line)){
         info.clear();
-        std::istringstream recode(line);		
+        std::istringstream recode(line);
         recode >> info.name;
         while(recode >> word)
             info.phones.push_back(word);
@@ -52,4 +52,3 @@ std::istream &read(std::istream &is,std::vector<PersonInfo> &vec){
     }
     return is;
 }
-

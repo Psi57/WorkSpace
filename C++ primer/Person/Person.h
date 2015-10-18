@@ -20,3 +20,6 @@ std::ostream &print (std::ostream &os,const person &P){
 	<< P.address;
 	return os;
 }
+
+bool compareName (person &p1,person &p2){return p1.getname() < p2.getname();}
+bool compareAddress (person &p1,person &p2){return p1.getaddress() < p2.getaddress();}
