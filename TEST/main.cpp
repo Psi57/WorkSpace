@@ -4,17 +4,13 @@
  * Thanks.
  */
 
-//#include "TEST.h"
-//#include <iostream>
-//#include <vector>
-//#include <string>
-//#include <algorithm>
-//using namespace std;
-//int main(){
-    //vector<double> v{1.2,5.3,4.3};
-    //cout << accumulate(v.cbegin(),v.cend(),0.0) << endl;   
-    //return 0;
-//}
-
-
-//Note:NEED CLEAN!
+#include "TEST.h"
+// using namespace std;
+// int main(int argc, char const *argv[]) {
+// 	std::vector<int> v{1,2,3,4,5};
+// 	int &a = v[2];
+// 	cout << a << endl;
+// 	v.erase(v.begin());
+// 	cout << a << endl;
+// 	return 0;
+// }
