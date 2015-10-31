@@ -53,7 +53,7 @@ string getstringB(string string1,string sgin1,string sgin2){
 		}
 		a+=sgin1.length();
 		if(c%2==0)
-			break;
+		break;
 		c=0;
 	}
 	c=0;
@@ -64,7 +64,7 @@ string getstringB(string string1,string sgin1,string sgin2){
 			c++;b--;
 		}
 		if(c%2==0)
-			break;
+		break;
 		d+=sgin2.length();
 		c=0;
 	}
@@ -74,86 +74,86 @@ string getstringBefore(string string1,string sgin){
 	return string1.substr(0,string1.find(sgin));
 }
 class configfile{
-	public:
-		configfile (string filename){
-			file.open(filename,ios::out);
+public:
+	configfile (string filename){
+		file.open(filename,ios::out);
+	}
+	void INSTALL_PACKAGES(string name){file << "pacman --noconfirm -S " << name << endl;}
+	void SERVER(string name){file << "systemctl enable " << name << endl;}
+	bool Doline(string line){
+		string commandname = getstringBefore(line,"(");
+		if (commandname == "INSTALL") {
+			INSTALL_PACKAGES(getstringA(line,"(\"","\")"));
+			return true;
+		} else if(commandname == "SERVER"){
+			SERVER(getstringA(line,"(\"","\")"));
+			return true;
+		} else if(commandname == "CHAROUT"){
+			cout << getstringB(line,"(\"","\")") << endl;
+			return true;
+		} else if (commandname == "ADD") {
+			file << getstringB(line,"(\"","\")") << endl;
+			return true;
+		} else if (commandname == "SETSGIN"){
+			sgin _s1;
+			_s1.name=getstringB(line, "(\"", "\")");
+			_s1.line=configsfile.line;
+			configsfile.sgins.push_back(_s1);
+			return true;
+		} else if (commandname == "GOTO"){
+			configsfile.line = getlineof(configsfile.sgins, getstringB(line, "(\"", "\")"));
+			return true;
+		} else if (commandname == "GETINSTRING") {
+			variable _v1;
+			_v1.name = getstringB(line,"(\"","\")");
+			cin >> _v1.content;
+			configsfile.variables.push_back(_v1);
+			return true;
+		} else if (commandname == "SETV") {
+			variable _v;
+			_v.name = getstringB(line, "(\"", "\",");
+			_v.content=getstringB(line, ",\"", "\")");
+			configsfile.variables.push_back(_v);
 		}
-		void INSTALL_PACKAGES(string name){file << "pacman --noconfirm -S " << name << endl;}
-		void SERVER(string name){file << "systemctl enable " << name << endl;}
-		bool Doline(string line){
-			string commandname = getstringBefore(line,"(");
-			if (commandname == "INSTALL") {
-				INSTALL_PACKAGES(getstringA(line,"(\"","\")"));
-				return true;
-			} else if(commandname == "SERVER"){
-				SERVER(getstringA(line,"(\"","\")"));
-				return true;
-			} else if(commandname == "CHAROUT"){
-				cout << getstringB(line,"(\"","\")") << endl;
-				return true;
-			} else if (commandname == "ADD") {
-				file << getstringB(line,"(\"","\")") << endl;
-				return true;
-			} else if (commandname == "SETSGIN"){
-				sgin _s1;
-				_s1.name=getstringB(line, "(\"", "\")");
-				_s1.line=configsfile.line;
-				configsfile.sgins.push_back(_s1);
-				return true;
-			} else if (commandname == "GOTO"){
-				configsfile.line = getlineof(configsfile.sgins, getstringB(line, "(\"", "\")"));
-				return true;
-			} else if (commandname == "GETINSTRING") {
-				variable _v1;
-				_v1.name = getstringB(line,"(\"","\")");
-				cin >> _v1.content;
-				configsfile.variables.push_back(_v1);
-				return true;
-			} else if (commandname == "SETV") {
-				variable _v;
-				_v.name = getstringB(line, "(\"", "\",");
-				_v.content=getstringB(line, ",\"", "\")");
-				configsfile.variables.push_back(_v);
+		return false;
+	}
+	//bool Dochunk(){}//Note:need to wrtie for SWITCH and so on.
+	int getlineof (std::vector<sgin> v,string name){
+		for(auto &a : v){
+			if(a.name==name){
+				return a.line;
 			}
-			return false;
 		}
-		//bool Dochunk(){}//Note:need to wrtie for SWITCH and so on.
-		int getlineof (std::vector<sgin> v,string name){
-			for(auto &a : v){
-				if(a.name==name){
-					return a.line;
-				}
+		return -1;
+	}
+	string getvariable(vector<variable> v,string name){
+		for(auto &a : v){
+			if(a.name == name){
+				return a.content;
 			}
-			return -1;
 		}
-		string getvariable(vector<variable> v,string name){
-			for(auto &a : v){
-				if(a.name == name){
-					return a.content;
-				}
-			}
-			return "";
-		}
+		return "";
+	}
 
-		//bool Do(){
-		//vector<string> v;
-		//string a;
-		//while(getline(configsfile.file_, a)){
-		//v.push_back(a);
-		//}
+	//bool Do(){
+	//vector<string> v;
+	//string a;
+	//while(getline(configsfile.file_, a)){
+	//v.push_back(a);
+	//}
 
-		//while(true){
-		//string commname = getstringBefore(v[configsfile.line], "(");
-		//if (commname == "GOTO") {
-		//configsfile.line = getlineof(configsfile.sgins, getstringB(v[configsfile.line], "(\"", "\")"));
-		//}
-		//}
-		//return true;
-		//}
+	//while(true){
+	//string commname = getstringBefore(v[configsfile.line], "(");
+	//if (commname == "GOTO") {
+	//configsfile.line = getlineof(configsfile.sgins, getstringB(v[configsfile.line], "(\"", "\")"));
+	//}
+	//}
+	//return true;
+	//}
 
-		//note:All of the fun "Do" need to recode!!!!!!!!!!!
-	private:
-		ofstream file;
-		struct file configsfile;
+	//note:All of the fun "Do" need to recode!!!!!!!!!!!
+private:
+	ofstream file;
+	struct file configsfile;
 };
 #endif
