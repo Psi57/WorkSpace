@@ -25,7 +25,7 @@ public:
 	screen display (std::ostream &os){do_display (os);return *this;}
 	const screen &display (std::ostream &os) const {do_display(os);return *this;}
 private:
-void do_display(std::ostream &os) const {os << contents;}
+	void do_display(std::ostream &os) const {os << contents;}
 	pos cursor = 0;
 	pos height = 0,width = 0;
 	std::string contents;
