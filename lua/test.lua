@@ -1,7 +1,17 @@
-function Name (age)
-    print(age)
+function stringToT (str)
+    return loadstring("return " .. str)()
 end
-local x = {0,1}
-print(x[1])
-age1 = io.read()
-Name(age1)
+local s1 = "{\nBasic_info = {\nname = \"Packexample\",\nversion = \"0.1-1\",\ndesc = \"a example\",\npackager = \"cpm_sheep\",\nlicense = \"GPLv2\",\ndepends = \"\"\n},\nExtra_info = \"自行填写\",\nFiles = {\n\"/bin/A.lua\",\n\"/bin/B.lua\"\n},\nExtra_Files = {}\n}"
+local res = stringToT(s1)
+print(s1)
+print(res)
+print(res.Basic_info.name)
+print(res.Basic_info.version)
+print(res.Basic_info.desc)
+print(res.Basic_info.packager)
+print(res.Basic_info.license)
+print(res.Basic_info.depends)
+print(res.Extra_info)
+print(res.Files[1])
+print(res.Files[2])
+print(res.Extra_Files)
